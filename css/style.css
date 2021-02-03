@@ -1,0 +1,76 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    text-align: center;
+}
+.main-div{
+    width: 560px;
+    height: 560px;
+    margin: 0 auto;
+    margin-top: 5em;
+}
+
+.head{
+    width: 100%;
+    margin: 0 auto;
+    border: 5px solid yellow;
+    background-color: rgb(5, 5, 77);
+    color: white;
+}
+
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border: 5px solid yellow;
+    margin: 0 auto;
+}
+
+.grid div{
+    width: 20px;
+    height: 20px;
+}
+
+.pacdots{
+    background-color: green;
+    border: 8px solid white;
+    box-sizing: border-box;
+    border-radius: 100%;
+}
+
+.wall{
+    background-color: rgb(5, 5, 77);
+}
+
+.power-pellet{
+    background-color: green;
+    border-radius: 100%;
+}
+.pacman{
+    background-color: yellow;
+    border-radius: 100%;
+}
+
+.blinky {
+    background-color: red;
+    border: none;
+}
+
+.pinky {
+    background-color: pink;
+    border: none;
+}
+
+.inky {
+    background-color: aqua;
+    border: none;
+}
+
+.clyde {
+    background-color: orange;
+    border: none;
+}
+
+.scared-ghost{
+    background-color: aqua;
+}
