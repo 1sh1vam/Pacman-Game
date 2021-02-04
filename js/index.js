@@ -69,7 +69,6 @@ createBoard()
 let pacmanCurrentIndex = 490;
 squares[pacmanCurrentIndex].classList.add("pacman")
 
-
 function control(e){
     squares[pacmanCurrentIndex].classList.remove("pacman")
     console.log(e.keyCode)
@@ -79,9 +78,10 @@ function control(e){
                 pacmanCurrentIndex%width !==0 &&
                 !squares[pacmanCurrentIndex-1].classList.contains("wall") &&
                 !squares[pacmanCurrentIndex-1].classList.contains("ghost-lair")
-            ){
-                pacmanCurrentIndex -= 1;
-            }
+            )
+            pacmanCurrentIndex -= 1;
+            else if(pacmanCurrentIndex === 364)
+                pacmanCurrentIndex = 391;
             break;
 
         case 38:
@@ -98,10 +98,10 @@ function control(e){
                 pacmanCurrentIndex %width < width-1 &&
                 !squares[pacmanCurrentIndex+1].classList.contains("wall") &&
                 !squares[pacmanCurrentIndex+1].classList.contains("ghost-lair")
-            ){
-                pacmanCurrentIndex += 1;
-            }
-            
+            )
+            pacmanCurrentIndex += 1;
+            else if(pacmanCurrentIndex === 391)
+                pacmanCurrentIndex = 364;
             break
         case 40:
             if(
@@ -116,6 +116,8 @@ function control(e){
     squares[pacmanCurrentIndex].classList.add("pacman")
     pacDotEaten()
     powerPelletEaten()
+    checkForGameOver()
+    checkForWin()
 }
 document.addEventListener('keyup', control)
 
@@ -174,9 +176,11 @@ function moveGhost(ghost){
             !squares[ghost.currentIndex + direction].classList.contains("wall") &&
             !squares[ghost.currentIndex + direction].classList.contains("ghost")
         ){
-            squares[ghost.currentIndex].classList.remove(ghost.className, "ghost", "scared-ghost")
+            squares[ghost.currentIndex].classList.remove(ghost.className)
+            squares[ghost.currentIndex].classList.remove("ghost", "scared-ghost")
             ghost.currentIndex += direction
-            squares[ghost.currentIndex].classList.add(ghost.className, "ghost")
+            squares[ghost.currentIndex].classList.add(ghost.className)
+            squares[ghost.currentIndex].classList.add("ghost")
         }
         else{
             direction = directions[Math.floor(Math.random()*directions.length)]
@@ -190,16 +194,15 @@ function moveGhost(ghost){
             ghost.isScared &&
             squares[ghost.currentIndex].classList.contains("pacman")
         ){
-            squares[ghost.currentIndex].classList.remove("ghost", ghost.className, "scared-ghost")
+            squares[ghost.currentIndex].classList.remove(ghost.className, "ghost", "scared-ghost")
             ghost.currentIndex = ghost.startIndex
             score += 100;
+            squares[ghost.currentIndex].classList.add(ghost.className, "ghost")
             scoreCard.textContent = score;
-            squares[ghost.currentIndex].classList.add("ghost", ghost.className)
         }
         checkForGameOver()
     }, ghost.speed)
-    
-        
+
 }
 
 function checkForGameOver(){
