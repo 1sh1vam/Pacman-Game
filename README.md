@@ -3,3 +3,8 @@
 
 ### Layout
 ![result](https://github.com/1sh1vam/Pacman-Game/blob/main/images/Screenshot%20(67).png)
+
+### Tools Used
+*  HTML 
+* CSS
+* JavaScript
