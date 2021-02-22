@@ -1,5 +1,5 @@
 # Pacman-Game
-###### Building a Vanilla Pacman game using javascript.
+# Building a Vanilla Pacman game using javascript.
 This project is a simple impementation of pacman game. We used JS, Javascript DOM manipulation, HTML and CSS to build this game. You can see the layout below.
 
 ### Layout
